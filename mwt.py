@@ -22,7 +22,7 @@ System                       | Step Time (sec/frame)  | Performance
 Usage:
 Please see the README for how to compile the program and run the model.
 """
-from __future__ import division
+
 
 import sys
 import getopt
@@ -62,7 +62,7 @@ def status_update(frame_number, tot_frames):
         sys.stdout.flush()
 
     if frame_number == tot_frames:
-        print "End of video reached successfully."
+        print("End of video reached successfully.")
 
 
 def analyze(video, write_output=True):
@@ -174,15 +174,15 @@ def analyze(video, write_output=True):
 
     # Provide update to user here.
     if recognized_waves is not None:
-        print "{} wave(s) recognized.".format(len(recognized_waves))
-        print "Program performance: %0.1f frames per second." %performance
+        print("{} wave(s) recognized.".format(len(recognized_waves)))
+        print("Program performance: %0.1f frames per second." %performance)
         for i, wave in enumerate(recognized_waves):
-            print ("Wave #{}: ID: {}, Birth: {}, Death: {}," \
+            print(("Wave #{}: ID: {}, Birth: {}, Death: {}," \
                    + " Max Displacement: {}, Max Mass: {}").format(
                         i+1, wave.name, wave.birth, wave.death,
-                        wave.max_displacement, wave.max_mass)
+                        wave.max_displacement, wave.max_mass))
     else:
-        print "No waves recognized."
+        print("No waves recognized.")
 
     # Clean-up resources.
     if write_output is True:
@@ -199,14 +199,14 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "i:")
     except getopt.GetoptError:
-        print "usage: mwt.py -i <inputfile>"
+        print("usage: mwt.py -i <inputfile>")
         sys.exit(2)
     for opt, arg in opts:
         if opt == ("-i"):
             inputfile = arg
 
     # Read video.
-    print "Checking video from", inputfile
+    print("Checking video from", inputfile)
     inputvideo = cv2.VideoCapture(inputfile)
 
     # Exit if video cannot be opened.

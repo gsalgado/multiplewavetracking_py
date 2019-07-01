@@ -15,7 +15,7 @@ Method for recognition is:
 -3. declare actual waves conditional on wave dynamics
 """
 
-from __future__ import division
+
 
 import numpy as np
 

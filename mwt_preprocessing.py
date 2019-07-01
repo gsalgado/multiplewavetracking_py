@@ -15,7 +15,7 @@
  -3. denoise image
 """
 
-from __future__ import division
+
 
 import cv2
 

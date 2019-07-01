@@ -9,7 +9,7 @@
 
 """Objects for implementing wave tracking."""
 
-from __future__ import division
+
 
 import math
 from collections import deque

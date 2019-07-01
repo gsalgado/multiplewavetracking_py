@@ -15,7 +15,7 @@ Method for detecting is:
 -3. create list of wave objects from filtered contours
 """
 
-from __future__ import division
+
 
 import math
 
