@@ -1,11 +1,11 @@
-##
-##  Near-shore Wave Tracking
-##  mwt_detection.py
-##
-##  Created by Justin Fung on 9/1/17.
-##  Copyright 2017 justin fung. All rights reserved.
-##
-## ========================================================
+#
+#  Near-shore Wave Tracking
+#  mwt_detection.py
+#
+#  Created by Justin Fung on 9/1/17.
+#  Copyright 2017 justin fung. All rights reserved.
+#
+# ========================================================
 
 """Routine for detecting potential waves.
 
@@ -14,8 +14,6 @@ Method for detecting is:
 -2. filter contours
 -3. create list of wave objects from filtered contours
 """
-
-
 
 import math
 
@@ -117,12 +115,12 @@ def keep_contour(contour,
 
         if ratio < min_inertia_ratio or ratio >= max_inertia_ratio:
             ret = False
-            #center.confidence = ratio * ratio;
+            # center.confidence = ratio * ratio;
 
     return ret
 
 
-## ========================================================
+# ========================================================
 
 
 def detect_sections(frame, frame_number):

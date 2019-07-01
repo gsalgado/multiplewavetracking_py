@@ -1,11 +1,11 @@
-##
-##  Near-shore Wave Tracking
-##  mwt_tracking.py
-##
-##  Created by Justin Fung on 9/1/17.
-##  Copyright 2017 justin fung. All rights reserved.
-##
-## ====================================================================
+#
+#  Near-shore Wave Tracking
+#  mwt_tracking.py
+#
+#  Created by Justin Fung on 9/1/17.
+#  Copyright 2017 justin fung. All rights reserved.
+#
+# ====================================================================
 
 """Functions for using tracking to recognize actual waves.
 
@@ -15,14 +15,7 @@ Method for recognition is:
 -3. declare actual waves conditional on wave dynamics
 """
 
-
-
 import numpy as np
-
-import mwt_objects
-
-
-## ====================================================================
 
 
 def will_be_merged(section, list_of_waves):

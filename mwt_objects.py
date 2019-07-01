@@ -1,14 +1,13 @@
-##
-##  Near-shore Wave Tracking
-##  mwt_objects.py
-##
-##  Created by Justin Fung on 9/1/17.
-##  Copyright 2017 justin fung. All rights reserved.
-##
-## ====================================================================
+#
+#  Near-shore Wave Tracking
+#  mwt_objects.py
+#
+#  Created by Justin Fung on 9/1/17.
+#  Copyright 2017 justin fung. All rights reserved.
+#
+# ====================================================================
 
 """Objects for implementing wave tracking."""
-
 
 
 import math
@@ -70,7 +69,6 @@ class Section(object):
         self.recognized = False
         self.death = None
 
-
     def update_searchroi_coors(self):
         """Method that adjusts the search roi for tracking a wave in
         future Frames.
@@ -86,7 +84,6 @@ class Section(object):
                                                     SEARCH_REGION_BUFFER,
                                                     ANALYSIS_FRAME_WIDTH)
 
-
     def update_death(self, frame_number):
         """Checks to see if wave has died, which occurs when no pixels
         are found in the wave's search roi.  "None" indicates wave is
@@ -100,7 +97,6 @@ class Section(object):
         """
         if self.points is None:
             self.death = frame_number
-
 
     def update_points(self, frame):
         """Captures all positive pixels the search roi based on
@@ -139,7 +135,6 @@ class Section(object):
         # update points
         self.points = points
 
-
     def update_centroid(self):
         """Calculates the center of mass of all positive pixels that
         represent the wave, using first-order moments.
@@ -155,7 +150,6 @@ class Section(object):
 
         # Update centroid vector.
         self.centroid_vec.append(self.centroid)
-
 
     def update_boundingbox_coors(self):
         """Finds minimum area rectangle that bounds the points of the
@@ -192,7 +186,6 @@ class Section(object):
 
         self.boundingbox_coors = boundingbox_coors
 
-
     def update_displacement(self):
         """Evaluates orthogonal displacement compared to original axis.
         Updates self.max_displacement if necessary.  Appends new
@@ -217,7 +210,6 @@ class Section(object):
         # Update displacement vector.
         self.displacement_vec.append(self.displacement)
 
-
     def update_mass(self):
         """Calculates mass of the wave by weighting each pixel in a
         search roi equally and performing a simple count.  Updates
@@ -234,7 +226,6 @@ class Section(object):
         # Update max_mass for the wave if necessary.
         if self.mass > self.max_mass:
             self.max_mass = self.mass
-
 
     def update_recognized(self):
         """Updates the boolean self.recognized to True if wave mass and
@@ -254,7 +245,7 @@ class Section(object):
                 self.recognized = True
 
 
-## ====================================================================
+# ====================================================================
 
 
 def _get_mass(points):

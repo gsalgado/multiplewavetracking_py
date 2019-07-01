@@ -1,11 +1,11 @@
-##
-##  Near-shore Wave Tracking
-##  mwt_preprocessing.py
-##
-##  Created by Justin Fung on 9/1/17.
-##  Copyright 2017 justin fung. All rights reserved.
-##
-## ========================================================
+#
+#  Near-shore Wave Tracking
+#  mwt_preprocessing.py
+#
+#  Created by Justin Fung on 9/1/17.
+#  Copyright 2017 justin fung. All rights reserved.
+#
+# ========================================================
 
 """Routine for preprocessing video frames.
 
@@ -14,8 +14,6 @@
  -2. extract foreground
  -3. denoise image
 """
-
-
 
 import cv2
 

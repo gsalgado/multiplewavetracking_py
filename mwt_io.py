@@ -1,16 +1,15 @@
-##
-##  Near-shore Wave Tracking
-##  mwt_io.py
-##
-##  Created by Justin Fung on 9/1/17.
-##  Copyright 2017 justin fung. All rights reserved.
-##
-## ========================================================
+#
+#  Near-shore Wave Tracking
+#  mwt_io.py
+#
+#  Created by Justin Fung on 9/1/17.
+#  Copyright 2017 justin fung. All rights reserved.
+#
+# ========================================================
 
 """A module for handling input and output of near-shore wave tracking
 analysis.
 """
-
 
 import os
 import csv
@@ -29,7 +28,7 @@ RECOGNIZED_WAVE_REPORT_FILE = "recognized_waves.txt"
 TRACKED_WAVE_FILE = "tracked_waves.mp4"
 
 
-## ========================================================
+# ========================================================
 
 
 def create_video_writer(input_video):
@@ -177,11 +176,11 @@ def draw(waves, frame, resize_factor):
     # Iterate through a list of waves.
 
     for wave in waves:
-        
+
         # For drawing circles on detected features
-        #center = (wave.centroid[0],wave.centroid[1])
-        #radius = 15
-        #cv2.circle(frame,center,radius,(0,255,0),2)
+        # center = (wave.centroid[0],wave.centroid[1])
+        # radius = 15
+        # cv2.circle(frame,center,radius,(0,255,0),2)
 
         if wave.death is None:
             # If wave is a wave, draw green, else yellow.
@@ -194,7 +193,7 @@ def draw(waves, frame, resize_factor):
                 drawing_color = (0, 255, 255)
                 text = ("Potential Wave\nmass: {}\ndisplacement: {}"
                         .format(wave.mass, wave.displacement))
-            
+
             if len(wave.centroid_vec) > 20:
                 # Draw Bounding Boxes:
                 # Get boundingbox coors from wave objects and resize.
@@ -210,15 +209,14 @@ def draw(waves, frame, resize_factor):
                 moving_y = np.mean([wave.centroid_vec[-k][1]
                                     for k
                                     in range(1, min(20, 1+len(wave.centroid_vec)))])
-                
+
                 # Draw wave stats on each wave.
                 for i, j in enumerate(text.split('\n')):
                     frame = cv2.putText(
                                     frame,
                                     text=j,
                                     org=(int(resize_factor*moving_x),
-                                         int(resize_factor*moving_y)
-                                            +(50 + i*45)),
+                                         int(resize_factor*moving_y) + (50 + i*45)),
                                     fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                                     fontScale=1.5,
                                     color=drawing_color,

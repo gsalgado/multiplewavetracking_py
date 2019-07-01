@@ -1,11 +1,11 @@
-##
-##  Near-shore Wave Tracking
-##  mwt.py
-##
-##  Created by Justin Fung on 9/1/17.
-##  Copyright 2017 justin fung. All rights reserved.
-##
-## ========================================================
+#
+#  Near-shore Wave Tracking
+#  mwt.py
+#
+#  Created by Justin Fung on 9/1/17.
+#  Copyright 2017 justin fung. All rights reserved.
+#
+# ========================================================
 
 """A module for recognition and tracking of multiple nearshore waves
 from input videos.
@@ -36,7 +36,7 @@ import mwt_tracking
 import mwt_io
 
 
-## ========================================================
+# ========================================================
 
 
 def status_update(frame_number, tot_frames):
@@ -51,11 +51,11 @@ def status_update(frame_number, tot_frames):
       VOID: writes status to stdout
     """
     if frame_number == 1:
-        sys.stdout.write("Starting analysis of %d frames...\n" %tot_frames)
+        sys.stdout.write("Starting analysis of %d frames...\n" % tot_frames)
         sys.stdout.flush()
 
     if frame_number % 100 == 0:
-        sys.stdout.write("%d" %frame_number)
+        sys.stdout.write("%d" % frame_number)
         sys.stdout.flush()
     elif frame_number % 10 == 0:
         sys.stdout.write(".")
@@ -129,11 +129,11 @@ def analyze(video, write_output=True):
                              wave.centroid))
 
         # Remove dead waves from tracked_waves.
-        dead_recognized_waves = [wave for wave in tracked_waves 
+        dead_recognized_waves = [wave for wave in tracked_waves
                                  if wave.death is not None
                                  and wave.recognized is True]
         recognized_waves.extend(dead_recognized_waves)
-        
+
         tracked_waves = [wave for wave in tracked_waves if wave.death is None]
 
         # Remove duplicate waves, keeping earliest wave.
@@ -151,18 +151,18 @@ def analyze(video, write_output=True):
             if not mwt_tracking.will_be_merged(section, tracked_waves):
                 tracked_waves.append(section)
 
-        #analysis_frame = cv2.cvtColor(analysis_frame, cv2.COLOR_GRAY2RGB)
+        # analysis_frame = cv2.cvtColor(analysis_frame, cv2.COLOR_GRAY2RGB)
 
         if write_output is True:
             # Draw detection boxes on original frame for visualization.
             original_frame = mwt_io.draw(
                                 tracked_waves,
                                 original_frame,
-                                #1)
+                                # 1)
                                 1/mwt_preprocessing.RESIZE_FACTOR)
 
             # Write frame to output video.
-            #out.write(analysis_frame)
+            # out.write(analysis_frame)
             out.write(original_frame)
 
         # Increment the frame count.
@@ -175,9 +175,9 @@ def analyze(video, write_output=True):
     # Provide update to user here.
     if recognized_waves is not None:
         print("{} wave(s) recognized.".format(len(recognized_waves)))
-        print("Program performance: %0.1f frames per second." %performance)
+        print("Program performance: %0.1f frames per second." % performance)
         for i, wave in enumerate(recognized_waves):
-            print(("Wave #{}: ID: {}, Birth: {}, Death: {}," \
+            print(("Wave #{}: ID: {}, Birth: {}, Death: {},"
                    + " Max Displacement: {}, Max Mass: {}").format(
                         i+1, wave.name, wave.birth, wave.death,
                         wave.max_displacement, wave.max_mass))
